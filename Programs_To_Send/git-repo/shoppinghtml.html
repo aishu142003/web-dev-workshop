@@ -1,0 +1,188 @@
+
+
+<html>
+<head><title>shopping cart</title>
+</head>
+<style>
+    *
+{
+    box-sizing: border-box;
+    
+}
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+    }
+    main {
+        flex: 1;
+        padding: 50px;
+    }
+    h1 {
+            font-size: 3rem; 
+        }
+    header{
+        padding: 50px;
+    background-color: rgb(208, 221, 221);
+    background-image: url(img2.jpeg);
+    background-size: 10% 100%;
+    }
+    footer {
+        background-color: #e7e1e1;
+        padding: 20px;
+        
+    }
+    footer a{
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+    nav
+{
+    overflow: hidden;
+    background-color: black;
+    padding: 10px; /* Reduced padding */
+    display: flex;
+    justify-content: center;
+}
+nav a /*pc*/
+{
+    text-align: center;
+    color: rgb(19, 231, 37);
+    text-decoration:none; /*to remove line like click me*/
+    padding: 10px;
+    font-weight:700;
+    
+}
+</style>
+<script>
+    let bookPrices = {
+        "C&Ds": 500,
+        "WebDev": 600,
+        "Java": 700,
+        "Oracle": 800,
+        "Ms SQL Server": 900,
+        "MySql": 1000,
+        "Percu Jackson": 550,
+        "Spirit Run ": 700,
+        "The Girl who stole the elephant": 650,
+        "The Secret Dragon": 800
+    };
+
+    function updateBookImage() {
+        let select = document.getElementById("bookSelect");
+        let selectedOption = select.options[select.selectedIndex];
+        let bookImage = document.getElementById("bookImage");
+        let priceInput = document.getElementById("price");
+
+        let imageSrc = selectedOption.getAttribute("data-img");
+        let bookName = selectedOption.value;
+
+        if (imageSrc) {
+            bookImage.src = imageSrc;
+        } else {
+            bookImage.src = "";
+        }
+
+        // Set price based on book selection
+        priceInput.value = bookPrices[bookName] || 0;
+        calculateTotal();
+    }
+
+    function calculateTotal() {
+        let price = document.getElementById("price").value;
+        let quantity = document.getElementById("q").value;
+        let totalCost = (price * quantity) + 100; // Adding shipping cost
+        document.getElementById("total").value = totalCost;
+        
+        // Update hidden input in the form
+        document.getElementById("hiddenTotal").value = totalCost;
+    }
+    function redirectToPayment() {
+        let totalCost = document.getElementById("total").value;
+        window.location.href = "paymenthtml.html?totalAmount=" + totalCost;
+    }
+</script>
+    
+    
+<body bgcolor="lightgreen">
+    <header></header>
+<nav>
+    <!--<center><a href="#"><h1>Shopping Cart</h1></a></center>
+    <p><center><h1>Shopping Cart</h1></center></p>-->
+</nav>
+<main>
+    <center><h1>
+        Shopping Cart</h1></center>
+<br><br><br>
+<table align="center">
+
+<tr>
+    <td>Text Books</td>
+    <td>
+        <select id="bookSelect" onchange="updateBookImage()">
+            <optgroup label="Select the book">
+                <option selected>Select Book</option>
+                <option value="C&Ds" data-img="https://m.media-amazon.com/images/I/71E4+-VhRBL._AC_UF1000,1000_QL80_.jpg">C&Ds</option>
+                <option value="WebDev" data-img="https://m.media-amazon.com/images/I/71oTUAxrrCL._UF1000,1000_QL80_.jpg">WebDev</option>
+                <option value="Java" data-img="https://m.media-amazon.com/images/I/51xiwRkS2oL._AC_UF1000,1000_QL80_.jpg">Java</option>
+                <option value="Oracle" data-img="https://m.media-amazon.com/images/I/61+SOJUGh-L._AC_UF1000,1000_QL80_.jpg">Oracle</option>
+                <option value="Ms SQL Server" data-img="https://m.media-amazon.com/images/I/817S2A+SPtL._AC_UF1000,1000_QL80_.jpg">Ms SQL Server</option>
+                <option value="MySql" data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe3Inl7puXLXXWmVACs89HjHkMY5qpBwPE2g&s">MySql</option>
+                <option value="The Secret Dragon" data-img="ad4.jpg">The Secret Dragon</option>
+                <option value="The Girl who stole the elephant" data-img="ad3.jpg">The Girl who stole the elephant</option>
+                <option value="Spirit Run " data-img="ad2.jpg">Spirit Run </option>
+                <option value="Percu Jackson" data-img="ad1.jpg">Percu Jackson</option>
+            </optgroup>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        <img id="bookImage" src="" alt="Select a book" width="150px">
+    </td>
+</tr>
+<!--<tr>
+<td>
+Quantity</td>
+<td>
+<input type="text" id="q">
+</td></tr>-->
+<tr>
+    <td>Price</td>
+    <td>
+        <input type="text" id="price" readonly>
+    </td>
+</tr>
+<tr>
+    <td>Quantity</td>
+    <td>
+        <input type="number" id="q" min="1" value="1" onchange="calculateTotal()">
+    </td>
+</tr>
+<tr>
+    <td>Total Cost</td>
+    <td>
+        <input type="text" id="total" readonly>
+    </td>
+</tr>
+</table>
+<center>
+    <button onclick="redirectToPayment()">Proceed to Payment</button>
+</center>
+<center>
+<pre>Cost of books "--" + shipping Cost "100" is "Total Cost"</pre>
+</center>
+</main>
+<footer>
+    <a href="#">FAQ</a>
+    <a href="#">Terms of user</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Feedback</a>
+    <a href="#">Contact Us</a>
+</footer>
+<body>
+</html>

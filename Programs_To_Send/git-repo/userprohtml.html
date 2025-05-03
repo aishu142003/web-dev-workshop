@@ -1,0 +1,116 @@
+
+<html>
+<head>
+<title>
+Registeration</title>
+</head>
+<style>
+        *
+{
+    box-sizing: border-box;
+    
+}
+body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+    }
+    main {
+        flex: 1;
+        padding: 50px;
+    }
+    header{
+        padding:50px;
+        background-image: url(img2.jpeg);
+        background-size: 10% 100%;
+    }
+    footer {
+        background-color: #21e62b;
+        padding: 20px;
+        
+    }
+    footer a{
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+    nav
+{
+    overflow: hidden;
+    background-color: black;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    height: 50px; 
+}
+nav a /*pc*/
+{
+    text-align: center;
+    float:left; /*to float element left*/
+    color: rgb(100, 247, 235);
+    text-decoration:underline; /*to remove line like click me*/
+    padding: 20px;
+    font-weight: 700;
+    
+}
+</style>
+<body bgcolor="lightgrey">
+    <header></header>
+    <nav>
+        <center><a href="#">REGISTRAION/SIGNUP</a></center>
+    </nav>
+    <main>
+<section>
+<form method="post" action="cataloghtml.html" >
+<right>
+<table align="left">
+<tr>
+<td><h3>UserName:</td>
+<td><input type="text"></td>
+<tr>
+<tr>
+<td><h3>Password:</td>
+<td><input type="password"></td>
+</tr>
+<tr>
+<td><h3>Confirm Password:</td>
+<td><input type="password"></td>
+</tr>
+<tr>
+    <td><h3>Gender:</h3></td>
+<td><h3>Male &nbsp; &nbsp; 
+<input type="radio" name="sex" id="male"></td>
+<td><h3>Female &nbsp; &nbsp;
+<input type="radio" name="sex" id="female" ></td>
+</tr>
+<td><h3>Country:<select><option selected>Select Country</option>
+    <option value="ind">India</option>
+    <option value="usa">United States of America</option>
+    <option value="eng">England</option> <option value="aus">Australia</option>
+    <option value="ger">Germany</option> <option value="pol">Poland</option>
+    </select></td>
+<tr>
+<td><h3>Address:</td>
+<td><textarea name="address" rows=5 cols=20>
+</textarea>
+</td>
+<tr>
+<td><input type="submit" value="submit" ></td>
+<td><input type="reset" value="reset"></td>
+</tr>
+</table>
+</form>
+</main>
+</section>
+<footer>
+    <a href="#">FAQ</a>
+    <a href="#">Terms of user</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Feedback</a>
+    <a href="#">Contact Us</a>
+</footer>
+</body>
+</html>
